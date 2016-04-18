@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title RecipeBox APP
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav{class: "navbar navbar-default"}
+      %div{class: "container"}
+        %div{class: "navbar-brand"}=link_to "Recipe Box", root_path
+        %ul{class: "nav navbar-nav navbar-right"}
+          %li=link_to 'Recipe', new_recipe_path
+          %li=link_to 'Sign Out', root_path
+
+    %div{class: "container"}
+      -flash.each do |name, msg|
+        =content_tag(:div, msg, class: 'alert')
+      = yield
